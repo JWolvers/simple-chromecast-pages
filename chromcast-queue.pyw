@@ -1,11 +1,27 @@
 import pychromecast
 from pychromecast.controllers import dashcast
+import tkinter as tk
+from tkinter import simpledialog
 import time
 import signal
 import socket
 import threading
 import os
 import sys
+
+def get_user_input():
+    # Create a root window
+    root = tk.Tk()
+    # Hide the root window
+    root.withdraw()
+
+    # Ask for user input via a simple dialog
+    user_input = simpledialog.askstring("Enter number", "Please enter your new number:")
+
+    # Close the root window
+    root.destroy()
+
+    return user_input
 
 class ChromecastApp:
     def __init__(self):
@@ -84,7 +100,7 @@ def check_server_running():
             message = sys.argv[1].encode()
             client_socket.sendall(message)
         else:
-            client_socket.sendall(b'+')
+            client_socket.sendall(get_user_input().encode())
         client_socket.close()
         return True
     except ConnectionError:
