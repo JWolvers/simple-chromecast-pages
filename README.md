@@ -1,5 +1,5 @@
-# countdown-timer-page
+# Simple chromecast pages
 
-A simple counter counting down time.
+Simple pages to be displayed on chromecast
 
- - [Preview timer](https://jwolvers.github.io/workday-countdown-timer-page/timer)
+ - [Timer](https://jwolvers.github.io/simple-chromecast-pages/timer)
