@@ -22,15 +22,17 @@
             font-size: 5vw; /* Responsive font size */
         }
 
-        /* New CSS for the message and arrow */
+        /* Updated CSS for the message and arrow with padding and margin */
         #takeNumberMsg {
             position: absolute;
             bottom: 10px;
             right: 10px;
             background-color: white;
             color: black;
-            padding: 5px;
+            padding: 10px; /* Increased padding */
+            margin: 10px; /* Added margin */
             border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Optional shadow for better visibility */
         }
 
         #takeNumberMsg::after {
@@ -47,14 +49,16 @@
 </head>
 <body>
     <div id="queueInfo">
-        <p>Current Number: <span id="currentNumber">0</span></p>
-        <p>Next Number: <span id="nextNumber">1</span></p>
+        <p>Huidig Nummer: <span id="currentNumber">0</span></p>
+        <p>Volgend Nummer: <span id="nextNumber">1</span></p>
     </div>
 
     <!-- New message div -->
     <div id="takeNumberMsg">
-        Please take a number from the dispenser
+        Neem alstublieft een nummer uit de automaat
     </div>
+
+    <audio id="bellSound" src="https://freesound.org/data/previews/91/91926_7037-lq.mp3"></audio>
 
     <script>
         function getQueryVariable(variable) {
