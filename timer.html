@@ -1,145 +1,51 @@
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="robots" content="noindex,nofollow">
-        <title>
-            Countdown timer
-        </title>
-        <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
 
-        <style>
-            body {
-                font-family: 'Major Mono Display', monospace;
-                background-color: #000000;
+        #countdown {
+            color: white;
+            font-size: 10vw; /* Adjust as needed for responsiveness */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        function updateCountdown() {
+            var now = new Date();
+            var targetTime = new Date();
+            targetTime.setHours(16, 45, 0, 0); // Set to 16:45
+
+            var timeDifference = targetTime - now;
+
+            if (timeDifference >= 0) {
+                var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = hours + "h " 
+                    + minutes + "m " + seconds + "s ";
+            } else {
+                document.getElementById("countdown").innerHTML = "Time's up!";
             }
+        }
 
-            .text {
-                font-size: 4.4vw;
-                text-align: left;
-                margin-left: 20px;
-                color: #d1d1d1;
-                letter-spacing: 2px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-            }
-
-            .section
-            {
-                /* height: 48px; */
-                /* line-height: 48px; */
-            }
-
-            .border-bottom-class
-            {
-                /* border-bottom: 1px solid #8c8c8c; */
-            }
-
-            /* .days-color {
-               
-            }
-
-            .hours-color {
-                
-            }
-
-            .minutes-color {
-                
-            }
-
-            .seconds-color {
-                
-            } */
-
-            .container {
-                width: 100%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        </style>
-    </head>
-    <body>
-            <!-- Display the countdown timer in an element -->
-        
-            <div class="container">
-                <div class="section">
-                    <div class="text">
-                        current date:
-                    </div>
-                </div>
-                <div class="section" style="margin-bottom: 60px;">
-                    <div id="current-date" class="text"></div>
-                </div>
-
-                <div class="section">
-                    <div class="text">
-                        end date:
-                    </div>
-                </div>
-                <div class="section" style="margin-bottom: 60px;">
-                    <div id="end-date" class="text"></div>
-                </div>
-
-                <div class="section border-bottom-class">
-                    <div id="demo" class="text"></div>
-                </div>
-                <div class="section border-bottom-class">
-                    <div id="days" class="text days-color"></div>
-                </div>
-                <div class="section border-bottom-class">
-                    <div id="hours" class="text hours-color"></div>
-                </div>
-                <div class="section border-bottom-class">
-                    <div id="minutes" class="text minutes-color"></div>
-                </div>
-                <div class="section">
-                    <div id="seconds" class="text seconds-color"></div>
-                </div>
-            </div>
-
-        <script>
-            // Set the date we're counting down to
-            var datetime = new Date();
-            datetime.setHours(16, 45, 0);
-            var countDownDate = new Date(datetime).getTime();
-
-            document.getElementById("end-date").innerHTML = datetime
-
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-                // Get today's date and time
-                var time = new Date()
-                var now = time.getTime();
-
-                currentDate = String(time).slice(4, 25)
-                document.getElementById("current-date").innerHTML = currentDate
-
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Display the result in the element with id="demo"
-                document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-                document.getElementById("days").innerHTML = days + " d";
-                document.getElementById("hours").innerHTML = Math.floor((distance / (1000 * 60 * 60))) + " h";
-                document.getElementById("minutes").innerHTML = Math.floor((distance / (1000 * 60))) + " m";
-                document.getElementById("seconds").innerHTML = Math.floor((distance / 1000)) + " s";
-
-                // If the count down is finished, write some text
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("demo").innerHTML = "EXPIRED";
-                }
-            }, 1000);
-        </script>
-    </body>
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
 </html>
