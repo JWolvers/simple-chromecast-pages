@@ -26,7 +26,6 @@
 <body>
     <div id="queueInfo">
         <p>Current Number: <span id="currentNumber">0</span></p>
-        <p>Persons Waiting: <span id="waitingCount">0</span></p>
         <p>Next Number: <span id="nextNumber">1</span></p>
     </div>
 
@@ -50,10 +49,7 @@
             var waitingCount = parseInt(getQueryVariable('waiting')) || 0;
 
             document.getElementById('currentNumber').textContent = currentNumber;
-            document.getElementById('waitingCount').textContent = waitingCount;
             document.getElementById('nextNumber').textContent = currentNumber + 1;
-
-            //Sleep
             
             // Play bell sound
             function beep() {
