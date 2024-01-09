@@ -17,22 +17,31 @@
             font-family: Arial, sans-serif;
         }
 
+        #controlsHelpdesk {
+            position: absolute;
+            top: 20px; /* Added margin */
+            width: 100%;
+            text-align: center;
+            font-size: 6vw; /* Big text size */
+            color: white;
+        }
+
         #queueInfo {
             text-align: center;
             font-size: 5vw; /* Responsive font size */
         }
 
-        /* Updated CSS for the message and arrow with padding and margin */
+        /* CSS for the message and arrow with padding and margin */
         #takeNumberMsg {
             position: absolute;
             bottom: 10px;
             right: 10px;
             background-color: white;
             color: black;
-            padding: 10px; /* Increased padding */
-            margin: 10px; /* Added margin */
+            padding: 10px;
+            margin: 10px;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Optional shadow for better visibility */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }
 
         #takeNumberMsg::after {
@@ -48,18 +57,15 @@
     </style>
 </head>
 <body>
-    <div style='position: absolute; top: 0; width: 100%; text-align: center; font-size: 3vw; color: white;'>Controle Helpdesk</div>
+    <div id="controlsHelpdesk">Helpdesk afdeling Controls</div>
     <div id="queueInfo">
         <p>Huidig Nummer: <span id="currentNumber">0</span></p>
         <p>Volgend Nummer: <span id="nextNumber">1</span></p>
     </div>
 
-    <!-- New message div -->
     <div id="takeNumberMsg">
         Neem alstublieft een nummer uit de automaat
     </div>
-
-    <audio id="bellSound" src="https://freesound.org/data/previews/91/91926_7037-lq.mp3"></audio>
 
     <script>
         function getQueryVariable(variable) {
